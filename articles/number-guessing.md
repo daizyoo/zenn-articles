@@ -88,7 +88,7 @@ let input_number: i32 = input.parse().unwrap();
 let parse_number = "47".parse().unwrap(); // ok
 let parse_number = "Hello".parse().unwrap(); // error
 ```
-
+a
 # おわりに
 
 記事にするほどのプログラムではないと思いますが、記事の練習として書いてみました。
