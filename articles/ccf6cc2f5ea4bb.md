@@ -1,7 +1,7 @@
 ---
 title: "#2 Rustでまるばつゲーム"
-emoji: "⭕️"
-type: "tech"
+emoji: ⭕️
+type: tech
 topics:
   - rust
   - 初心者
@@ -15,7 +15,7 @@ published: false
 
 ## 対象読者
 
-- プログラミング初心者
+- プログラミング中級者
 - Rustを勉強している人
 
 ## コード
@@ -33,7 +33,7 @@ published: false
 
 ## プログラムの流れ
 
-次は全体の流れを決めていきたいと思います。
+次は全体の流れを決めていきます。
 
 - ゲームスタート
 - メインループ
@@ -161,6 +161,7 @@ fn input() -> Result<usize, std::num::ParseIntError> {
     input.trim().parse::<usize>()
 }
 ```
+
 
 [前回]: https://zenn.dev/daizyoo/articles/number-guessing "number-guessing"
 [こちら]: https://github.com/daizyoo/tic-toc-toe "tic-toc-toe"
