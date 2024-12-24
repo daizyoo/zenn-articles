@@ -111,11 +111,13 @@ if input_number == guess_number {
 先ほど宣言した`input_number`とランダムな数値を比較します
 `input_number`には入力した数値が入っています。
 もし入力がランダムな数値と、
-一致した場合は文を表示して、`loop`を終了
+一致した場合は文を表示して、ループを終了
 小さい場合は二番目の文を表示、
 大きい場合は三番目の文を表示します。
 
 ## おわりに
+
+今後もこのような内容の記事を書いていきたいと思っているので修正などのアドバイスを是非コメントでしてもらえるとありがたいです！
 
 :::details 全体のコード
 
@@ -132,7 +134,6 @@ fn main() {
         let input_number: i32 = input.parse().unwrap();
 
         if input_number == guess_number {
-
             println!("You guessed correctly!");
             break;
         } else if input_number < guess_number {
@@ -154,8 +155,5 @@ fn input() -> String {
 ```
 
 :::
-
-解説するほどのプログラムではないと思いますが、記事の練習として書いてみました。
-今後もこのような内容の記事を書いていきたいと思っているので修正などのアドバイスを是非コメントでしてもらえるとありがたいです！
 
 [GitHub]: https://github.com/daizyoo/number-guessing
