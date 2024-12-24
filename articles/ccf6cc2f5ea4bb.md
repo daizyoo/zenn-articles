@@ -1,10 +1,11 @@
 ---
-title: "#2 Rustでまるばつゲーム"
-emoji: "⭕️"
-type: "tech"
+title: "#3 Rustでまるばつゲーム"
+emoji: ⭕️
+type: tech
 topics:
-  - rust
+  - Rust
   - 初心者
+  - Game
 published: false
 ---
 
@@ -15,7 +16,7 @@ published: false
 
 ## 対象読者
 
-- プログラミング初心者
+- プログラミング中級者
 - Rustを勉強している人
 
 ## コード
@@ -33,7 +34,7 @@ published: false
 
 ## プログラムの流れ
 
-次は全体の流れを決めていきたいと思います。
+次は全体の流れを決めていきます。
 
 - ゲームスタート
 - メインループ

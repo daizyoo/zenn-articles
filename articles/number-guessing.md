@@ -9,58 +9,30 @@ topics:
 published: true
 ---
 
-# はじめに
+## はじめに
 
-Rustで数当てゲームを作ってみたので記事にしてみました。
+Rustで数当てゲームを作ってみたのでプログラミングを始めたばかりの初心者に向けて記事にしました。
+この記事のコードは[GitHub]にあります
 
-## 対象読者
+## プログラムの解説
 
-Rustやプログラミングを始めたばかりの初心者に向けて書いた記事です。
+### プログラムの流れ
 
-## 本記事のプログラム
+1. 1から100までのランダムな数字を生成
+2. 入力を受け取る
+3. 入力した文字列をを数字に変換
+4. 入力された数字とランダムな数を比較する
+    - ランダムな数値と入力された数値が同じなら終了
+    - 小さいか大きいかを表示し、もう一度2から始める
 
-[GitHub](https://github.com/daizyoo/number-guessing)に載せてあります
-
-# プログラムの解説
-
-## 全体像
-
-プログラム全体の流れを解説します。
-
-- 1から100までのランダムな数字を生成
-- 無限ループを開始
-- 入力を受け取る
-- 入力を数字に変換
-- 入力した数字が大きいか小さいかを表示、もし正解の数字と同じなら、`You guessed correctly`と表示して無限ループを終了
-
-## input関数
-
-```rust
-fn input() -> String {
-    let mut input = String::new();
-    std::io::stdin().read_line(&mut input).unwrap(); // 改行を削除 // "123\n" -> "123"
-    input.trim().to_string()
-}
-```
-
-この関数はターミナルで入力した文字列を取得する関数です。
-:::details 例
-
-```rust
-fn main() {
-    let input = input();
-    println!("あなたが入力した文字は{}です！", input);
-}
-```
-
-このプログラムを実行すると、`{}`の部分に入力した文字列が入った文字列が出力されます。
-:::
-
-## ランダムな数字を生成する
+### ランダムな数字を生成する
 
 ```rust
 thread_rng().gen_range(1..=100)
 ```
+
+これは説明すると長くなるのでぐぐってください。
+`1..=100`の部分は範囲を表します。数字を変更すれば生成される範囲を指定できます。
 
 :::details 例
 
@@ -70,26 +42,118 @@ println!("{}", random);
 ```
 
 このプログラムを実行すると1 ~ 100のランダムな数字が表示されます。
-:::
-`.gen_range(始まり..=終わり)`こんな感じで使います。
-`1..=100`を`1..100`にすると1 ~ 99が生成されます。
-くわしくは[こちら](https://rs.nkmk.me/rust-range/)を見てください
 
-## 入力した文字列を数字に変換する
+:::
+
+### 入力した数を受け取る
+
+```rust
+fn input() -> String {
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap(); 
+    input.trim().to_string() // 改行を削除 "123\n" -> "123"
+}
+```
+
+この関数はターミナルで入力した文字列を取得する関数です。
+
+```rust
+let mut input = String::new();
+```
+
+で入力した文字列を入れる変数を用意します
+
+```rust
+std::io::stdin().read_line(&mut input).unwrap();
+```
+
+この行は入力した文字列を`input`変数に代入します。
+
+```rust
+input.trim().to_string()
+```
+
+最後に`input`変数には最後に改行文字(\n)が入ってしまっているのでそれを削除して、戻り値と知して返します
+
+:::details input関数
+
+```rust
+let input = input();
+println!("あなたが入力した文字は{}です！", input);
+```
+
+このプログラムを実行すると、`{}`の部分に入力した文字列が入った文字列が出力されます。
+
+:::
+
+### 入力した文字列を数字に変換する
 
 ```rust
 let input_number: i32 = input.parse().unwrap();
 ```
 
+入力した文字列を`parse()`メソッドを使って数値に変換します。
 もし`input`変数が文字列に変換できない場合はエラーになります。
-> 例
+
+### 入力された数字とランダムな数を比較する
 
 ```rust
-let parse_number = "47".parse().unwrap(); // ok
-let parse_number = "Hello".parse().unwrap(); // error
+if input_number == guess_number {
+    println!("You guessed correctly!");
+    break;
+} else if input_number < guess_number {
+    println!("You guessed too low!");
+} else if input_number > guess_number {
+    println!("You guessed too high!");
+}
 ```
 
-# おわりに
+先ほど宣言した`input_number`とランダムな数値を比較します
+`input_number`には入力した数値が入っています。
+もし入力がランダムな数値と、
+一致した場合は文を表示して、ループを終了
+小さい場合は二番目の文を表示、
+大きい場合は三番目の文を表示します。
 
-記事にするほどのプログラムではないと思いますが、記事の練習として書いてみました。
+## おわりに
+
 今後もこのような内容の記事を書いていきたいと思っているので修正などのアドバイスを是非コメントでしてもらえるとありがたいです！
+
+:::details 全体のコード
+
+```rust
+use rand::{thread_rng, Rng};
+
+fn main() {
+    let guess_number = thread_rng().gen_range(1..=100);
+    println!("Guess a number between 1 and 100");
+
+    loop {
+        let input = input();
+
+        let input_number: i32 = input.parse().unwrap();
+
+        if input_number == guess_number {
+            println!("You guessed correctly!");
+            break;
+        } else if input_number < guess_number {
+
+            println!("You guessed too low!");
+        } else if input_number > guess_number {
+
+            println!("You guessed too high!");
+        }
+    }
+    println!("The number was: {}", guess_number);
+}
+
+fn input() -> String {
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+    input.trim().to_string()
+}
+```
+
+:::
+
+[GitHub]: https://github.com/daizyoo/number-guessing
