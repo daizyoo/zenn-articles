@@ -1,5 +1,5 @@
 ---
-title: "#2 Rustでまるばつゲーム"
+title: "#3 Rustでまるばつゲーム"
 emoji: ⭕️
 type: tech
 topics:
