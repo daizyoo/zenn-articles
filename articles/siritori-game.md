@@ -1,7 +1,7 @@
 ---
 title: "#3 Rustでしりとり"
-emoji: ""
+emoji: "🍑"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
+topics: ["Rust", "初心者", "game"]
 published: false
 ---
