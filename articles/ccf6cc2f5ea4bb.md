@@ -1,10 +1,11 @@
 ---
-title: "#2 Rustでまるばつゲーム"
+title: "#3 Rustでまるばつゲーム"
 emoji: ⭕️
 type: tech
 topics:
-  - rust
+  - Rust
   - 初心者
+  - Game
 published: false
 ---
 
@@ -161,7 +162,6 @@ fn input() -> Result<usize, std::num::ParseIntError> {
     input.trim().parse::<usize>()
 }
 ```
-
 
 [前回]: https://zenn.dev/daizyoo/articles/number-guessing "number-guessing"
 [こちら]: https://github.com/daizyoo/tic-toc-toe "tic-toc-toe"
